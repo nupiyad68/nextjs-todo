@@ -12,5 +12,13 @@ model User {
   kindeId String @unique
   email String @unique
   name String
-  createdAt DateTime @updatedAt
+  createdAt DateTime
+  todos Todo[]
+}
+
+model Todo {
+  id Int @id @unique @default(autoincrement())
+  author User @relation(fields: [authorId], references: [kindeId])
+  task String
+  authorId String
 }

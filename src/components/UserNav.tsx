@@ -2,15 +2,13 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "./ui/button";
 import { PrismaClient } from "@prisma/client";
+import Link from "next/link";
 
 export default async function UserNav() {
   const isAuthenticated = await getKindeServerSession().isAuthenticated();
   const user = await getKindeServerSession().getUser();
 
-  const prisma = new PrismaClient();
-
-  
-  
+  const prisma = new PrismaClient();  
   
   if (isAuthenticated && user) {
       const name = user.given_name as string;
@@ -40,7 +38,7 @@ export default async function UserNav() {
 
     return (
       <div className="flex items-center gap-x-2">
-        <span className="text-sm font-semibold">{user.given_name}</span>
+        <Link href="/todos" className="">Todos</Link>
         <LogoutLink>
           <Button>Sign Out</Button>
         </LogoutLink>
