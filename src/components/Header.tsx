@@ -1,6 +1,6 @@
 import Container from "./Container";
 import { ThemeToggle } from "./ThemeToggle";
-import { Button } from "./ui/button";
+import UserNav from "./UserNav";
 
 export default function Header() {
   return (
@@ -8,12 +8,12 @@ export default function Header() {
       <Container>
         <div className="flex items-center justify-between">
           <h1>Site Logo</h1>
-          <div>
+          <div className="flex items-center gap-x-3">
             <ThemeToggle />
-            <Button>Login</Button>
+            <UserNav />
           </div>
         </div>
       </Container>
     </header>
-  )
+  );
 }
