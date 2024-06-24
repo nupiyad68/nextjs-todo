@@ -3,10 +3,10 @@ import { Input } from "@/components/ui/input";
 import { createTodo, deleteTodo } from "./todoActions";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { PrismaClient } from "@prisma/client";
 import { Trash } from "lucide-react";
 import AddTodoForm from "@/components/AddTodoForm";
 import TodoItem from "@/components/TodoItem";
+import { prisma } from "@/lib/db";
 
 export default async function Page() {
   const user = await getKindeServerSession().getUser();
@@ -14,8 +14,6 @@ export default async function Page() {
   if (!user) {
     return redirect("/");
   }
-
-  const prisma = new PrismaClient();
 
   const todos = await prisma.todo.findMany({
     where: {

@@ -1,14 +1,12 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { Button } from "./ui/button";
-import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
+import { prisma } from "@/lib/db";
 
 export default async function UserNav() {
   const isAuthenticated = await getKindeServerSession().isAuthenticated();
   const user = await getKindeServerSession().getUser();
-
-  const prisma = new PrismaClient();  
   
   if (isAuthenticated && user) {
       const name = user.given_name as string;
