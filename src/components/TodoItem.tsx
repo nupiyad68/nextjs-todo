@@ -4,7 +4,6 @@ import { Edit, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { deleteTodo } from "@/app/todos/todoActions";
 import { useState } from "react";
-import TodoForm from "./AddTodoForm";
 import UpdateTodoForm from "./UpdateTodoForm";
 
 export default function TodoItem({

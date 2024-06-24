@@ -33,7 +33,7 @@ export default async function Page() {
         <h1 className="text-3xl font-semibold">Create Todo</h1>
         <AddTodoForm />
         <div className="flex flex-col gap-y-4">
-          {todos.map((todo) => {
+          {todos.map((todo: {id: number, task: string}) => {
             return (
               <TodoItem key={todo.id} todo={todo} />
             )
